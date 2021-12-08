@@ -3,7 +3,7 @@ package com.company;
 public class MissionArray {
     public static void main(String[] args) {
         int[] a1 = {20, 75, -7, 82};
-        int[] a2 = {1, -5, 0};
+        int[] a2 = {-8, 50, 5, -60, 90};
         int[] a3 = new int[a1.length + a2.length];
         for (int i = a1.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
@@ -32,31 +32,44 @@ public class MissionArray {
         for (int i = 0; i < a2.length; i++) {
             System.out.print(a2[i] + " ");
         }
-        //  слияние упорядоченых массивов а1 и а1 по возрастанию
-        int b = a1[0];
-        int x = 0;
+        //  слияние упорядоченых массивов а1 и а2 по возрастанию
 
-        for (int j = 0; j < a2.length; j++) {
-            if (a2[j] <= b) {
-                a3[x++] = a2[j];
-            } else {
-                a3[x++] = b;
-                b = a2[j];
+        if (a1.length == 0) {
+            for (int i = 0; i < a2.length; i++) {
+                a3 [i] = a2[i];
+            }
+        } else {
+            if (a2.length == 0) {
+                for (int i = 0; i < a1.length; i++) {
+                    a3 [i] = a1[i];
+            }
+        } else {
+                int b = a1[0];
+                int x = 0;
+
+                for (int j = 0; j < a2.length; j++) {
+                    if (a2[j] <= b) {
+                        a3[x++] = a2[j];
+                    } else {
+                        a3[x++] = b;
+                        b = a2[j];
+                    }
+                }
+
+                for (int i = 1; i < a1.length; i++) {
+                    if (a1[i] <= b) {
+                        a3[x++] = a1[i];
+                    } else {
+                        a3[x++] = b;
+                        b = a1[i];
+                    }
+                }
+
+                if (x == a3.length - 1) {
+                    a3[x] = b;
+                }
             }
         }
-
-        for (int i = 1; i < a1.length; i++) {
-            if (a1[i] <= b) {
-                a3[x++] = a1[i];
-            } else {
-                a3[x++] = b;
-                b = a1[i];
-            }
-        }
-
-            if (x == a3.length-1) {
-                a3[x] = b;
-            }
 
         System.out.println();
         for (int i = 0; i < a3.length; i++) {
