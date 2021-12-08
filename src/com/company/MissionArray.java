@@ -1,17 +1,67 @@
 package com.company;
 
 public class MissionArray {
-
     public static void main(String[] args) {
-        int year = 100;
-        int summ = 0;
-        for (int i=1; i <= year; i++ ) {
-            if (((i % 4 == 0) && (i % 100 !=0)) || (i % 400 == 0)) {
-                summ++;
+        int[] a1 = {20, 75, -7, 82};
+        int[] a2 = {1, -5, 0};
+        int[] a3 = new int[a1.length + a2.length];
+        for (int i = a1.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (a1[j] > a1[j + 1]) {
+                    int x;
+                    x = a1[j];
+                    a1[j] = a1[j + 1];
+                    a1[j + 1] = x;
+                }
             }
         }
-        System.out.println("summ = " + summ);
-        //return year;
+        for (int i = a2.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (a2[j] > a2[j + 1]) {
+                    int x;
+                    x = a2[j];
+                    a2[j] = a2[j + 1];
+                    a2[j + 1] = x;
+                }
+            }
+        }
+        for (int i = 0; i < a1.length; i++) {
+            System.out.print(a1[i] + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < a2.length; i++) {
+            System.out.print(a2[i] + " ");
+        }
+        //  слияние упорядоченых массивов а1 и а1 по возрастанию
+        int b = a1[0];
+        int x = 0;
+
+        for (int j = 0; j < a2.length; j++) {
+            if (a2[j] <= b) {
+                a3[x++] = a2[j];
+            } else {
+                a3[x++] = b;
+                b = a2[j];
+            }
+        }
+
+        for (int i = 1; i < a1.length; i++) {
+            if (a1[i] <= b) {
+                a3[x++] = a1[i];
+            } else {
+                a3[x++] = b;
+                b = a1[i];
+            }
+        }
+
+            if (x == a3.length-1) {
+                a3[x] = b;
+            }
+
+        System.out.println();
+        for (int i = 0; i < a3.length; i++) {
+            System.out.print(a3[i] + " ");
+        }
     }
 }
 
@@ -19,24 +69,49 @@ public class MissionArray {
 
 
 
+        /*
 
+        int[] arr = {20, 75, -7, 75, 75, 60, 94};
+        for (int i = arr.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}*/
 
+/*
+String x = text.toLowerCase();
+        x = x.replaceAll("[^A-Za-z0-9]", "");
 
+        char [] array1Text = x.toCharArray();
+        char [] array2Text = new char [array1Text.length];
+        for (int i=0; i<array1Text.length; i++) {
+            array2Text [(array2Text.length-1) - i] = array1Text [i];
+        }
 
+        boolean result = Arrays.equals(array1Text,array2Text);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return result;
+ */
+/*
+String Text = "Madam, I'm Adam!";
+        String x = Text.toLowerCase();
+        x = x.replaceAll("[^A-Za-z0-9]", "");
+        StringBuilder sb1 = new StringBuilder(x);
+        sb1.reverse();
+        System.out.println(sb1);
+        StringBuilder sb2 = new StringBuilder(x);
+        System.out.println(sb2);
+        System.out.println("result = " + sb1.toString().equals(sb2.toString()));
+ */
 
 /*
         int[] array1 = {20,8,-7,75,45,60,94};
@@ -124,12 +199,6 @@ public class MissionArray {
     }
 }
 */
-
-
-
-
-
-
 
     /*int [] array1 = {-3,4,-3,-3,-3,10,1,10,10};
     int quantityMax =0;
