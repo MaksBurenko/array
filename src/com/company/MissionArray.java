@@ -2,81 +2,173 @@ package com.company;
 
 public class MissionArray {
     public static void main(String[] args) {
-        int[] a1 = {20, 75, -7, 82};
-        int[] a2 = {-8, 50, 5, -60, 90};
-        int[] a3 = new int[a1.length + a2.length];
-        for (int i = a1.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (a1[j] > a1[j + 1]) {
-                    int x;
-                    x = a1[j];
-                    a1[j] = a1[j + 1];
-                    a1[j + 1] = x;
-                }
-            }
-        }
-        for (int i = a2.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (a2[j] > a2[j + 1]) {
-                    int x;
-                    x = a2[j];
-                    a2[j] = a2[j + 1];
-                    a2[j + 1] = x;
-                }
-            }
-        }
-        for (int i = 0; i < a1.length; i++) {
-            System.out.print(a1[i] + " ");
-        }
-        System.out.println();
-        for (int i = 0; i < a2.length; i++) {
-            System.out.print(a2[i] + " ");
-        }
-        //  слияние упорядоченых массивов а1 и а2 по возрастанию
+        int[] a1 = null;
+        int[] a2 = {1, 2};
 
-        if (a1.length == 0) {
-            for (int i = 0; i < a2.length; i++) {
-                a3 [i] = a2[i];
-            }
+        // проверка массивов на 0 и null
+        if (a1 == null || a1.length == 0) {
+            return a2;
         } else {
-            if (a2.length == 0) {
-                for (int i = 0; i < a1.length; i++) {
-                    a3 [i] = a1[i];
-            }
-        } else {
-                int b = a1[0];
+            if (a2 == null || a2.length == 0) {
+                return a1;
+            } else {
+
+                // внесение отсортированных данных в массив a3
+                int[] a3 = new int[a1.length + a2.length];
+
                 int x = 0;
+                int y = 0;
 
-                for (int j = 0; j < a2.length; j++) {
-                    if (a2[j] <= b) {
-                        a3[x++] = a2[j];
+                for (int i = 0; ; i++) {
+                    if (i == a1.length-1) {
+                        ?????
                     } else {
-                        a3[x++] = b;
-                        b = a2[j];
+                        if (i == a2.length-1) {
+                            ?????
+                        }
+                        else {
+                            if (a1[x] < a2[y]) {
+                                a3[i] = a1[x];
+
+                                x++;
+                            } else {
+                                a3[i] = a2[y];
+                                y++;
+                            }
+                        }
                     }
                 }
-
-                for (int i = 1; i < a1.length; i++) {
-                    if (a1[i] <= b) {
-                        a3[x++] = a1[i];
-                    } else {
-                        a3[x++] = b;
-                        b = a1[i];
-                    }
-                }
-
-                if (x == a3.length - 1) {
-                    a3[x] = b;
-                }
+                return a3;
             }
-        }
-
-        System.out.println();
-        for (int i = 0; i < a3.length; i++) {
-            System.out.print(a3[i] + " ");
         }
     }
 }
+
+
+/*
+        // проверка массивов на 0 и null
+        if (a2 == null & a1 == null) {
+            // return a1;
+            System.out.print("null");
+
+        } else {
+            if (a2 == null && a1.length == 0) {
+                // return a1;
+                System.out.print(a1.length);
+
+            } else {
+                if (a1 == null && a2.length == 0) {
+                    // return a2;
+                    System.out.print(a2.length);
+
+                }  else {
+                        if (((a1 == null) || (a1.length == 0)) && ((a2 != null) && (a2.length != 0))) {
+                            for (int i = a2.length - 1; i > 0; i--) {
+                                for (int j = 0; j < i; j++) {
+                                    if (a2[j] > a2[j + 1]) {
+                                        int tmp = a2[j];
+                                        a2[j] = a2[j + 1];
+                                        a2[j + 1] = tmp;
+                                    }
+                                }
+                            }
+                            // return a2;
+                            for (int z = 0; z < a2.length; z++) {
+                                System.out.print(a2[z] + " ");
+                            }
+                        } else {
+
+                            if (((a2 == null) || (a2.length == 0)) && ((a1 != null) && (a1.length != 0))) {
+                                for (int i = a1.length - 1; i > 0; i--) {
+                                    for (int j = 0; j < i; j++) {
+                                        if (a1[j] > a1[j + 1]) {
+                                            int tmp = a1[j];
+                                            a1[j] = a1[j + 1];
+                                            a1[j + 1] = tmp;
+                                        }
+                                    }
+                                }
+                                // return a1;
+                                for (int z = 0; z < a1.length; z++) {
+                                    System.out.print(a1[z] + " ");
+                                }
+                            } else {
+                                    if (a2.length == 0 && a1.length == 0) {
+                                        // return a1;
+                                        System.out.print(a1.length);
+
+                                    } else {
+
+                                int[] a3 = new int[a1.length + a2.length];
+
+                                // сортировка массива a1
+                                for (int i = a1.length - 1; i > 0; i--) {
+                                    for (int j = 0; j < i; j++) {
+                                        if (a1[j] > a1[j + 1]) {
+                                            int tmp = a1[j];
+                                            a1[j] = a1[j + 1];
+                                            a1[j + 1] = tmp;
+                                        }
+                                    }
+                                }
+                                for (int i = 0; i < a1.length; i++) {
+                                    System.out.print(a1[i] + " ");
+                                }
+                                // сортировка массива a2
+                                for (int i = a2.length - 1; i > 0; i--) {
+                                    for (int j = 0; j < i; j++) {
+                                        if (a2[j] > a2[j + 1]) {
+                                            int tmp = a2[j];
+                                            a2[j] = a2[j + 1];
+                                            a2[j + 1] = tmp;
+                                        }
+                                    }
+                                }
+                                System.out.println();
+                                for (int i = 0; i < a2.length; i++) {
+                                    System.out.print(a2[i] + " ");
+                                }
+                                // внесение отсортированных данных в массив a3
+                                int x = 0;
+                                int y = 0;
+
+                                for (int i = 0; i < a3.length - 1; i++) {
+                                    if (a1[x] < a2[y]) {
+                                        a3[i] = a1[x];
+
+                                        x++;
+                                    } else {
+                                        a3[i] = a2[y];
+
+                                        y++;
+                                    }
+                                    // вычисление последнего элемента и его запись
+                                    if (i == a3.length - 2) {
+                                        if (a1[a1.length - 1] >= a2[a2.length - 1]) {
+                                            a3[i + 1] = a1[a1.length - 1];
+
+                                        } else {
+                                            a3[i + 1] = a2[a2.length - 1];
+
+                                        }
+                                    }
+                                }
+                                System.out.println();
+                                for (int z = 0; z < a3.length; z++) {
+                                    System.out.print(a3[z] + " ");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}*/
+
+
+
+
 
 
 
